@@ -1,7 +1,7 @@
 import { prismaClient } from "../lib/db";
 import { Response, Request } from "express";
 import apicache from "apicache";
-ap
+
 export default class User {
   static GET_ALL_USERS = async (req: Request, res: Response) => {
     (req as any).apicacheGroup = "allusers"
