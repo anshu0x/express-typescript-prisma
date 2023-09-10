@@ -4,7 +4,7 @@ import apicache from "apicache";
 
 export default class User {
   static GET_ALL_USERS = async (req: Request, res: Response) => {
-    (req as any).apicacheGroup = "allusers"
+    (req as any).apicacheGroup = "allusers";
     const data = await prismaClient.user.findMany();
     let newProm = new Promise<void>((res, reject) => {
       setTimeout(() => {
@@ -37,7 +37,8 @@ export default class User {
         password,
       },
     });
-    apicache.clear(req.params.target)
+    console.log(req.params.target, "req.params.target");
+    apicache.clear("allusers");
     res.json(newUser);
   };
 
